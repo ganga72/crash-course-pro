@@ -9,13 +9,13 @@ jobs:
     steps:
       - run: echo "Hello World!"
       
-  say-hello-inline-bash:
+  say-hello-inline-python:
     runs-on: ubuntu-24.04
     steps:
       - run: print "Hello World!"
         shell: python
 
-  say-hello-inline-bash:
+  say-hello-action:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/hello-world-javascript-action
