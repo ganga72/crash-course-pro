@@ -1,17 +1,31 @@
-name: step types
+name: :workflow, jbs, and steps
 
 on: 
   workflow_dispatch:
 
 jobs:
-  say-hello-inline-bash:
-    runs-on: ubuntu-24.04
+  job-1:
+    runs-on: ubuntu-22.04
     steps:
-      - run: echo "Hello World!"
-      
-  say-hello-inline-python:
-    runs-on: ubuntu-24.04
+      - run: echo "A job consits"
+      - run: echo "on or more steps"
+      - run: echo "which run sequentially"
+      - run: echo "within the same compile environment"
+  job-2:
+    runs-on: ubuntu-22.04
     steps:
-      - run: print ("Hello World!")
-        shell: python
-      
+      - run: each "multiple jobs can run in parallel"
+  job-3:
+    runs-on: ubuntu-22.04
+    needs:
+    - job-1
+    - job-2
+    steps:
+      - run: echo "they can also depend on the another..."
+  job-4:
+    runs-on: ubuntu-22.04
+    needs:
+    - job-2
+    - job-3
+    steps:
+      - run: echo "... to form a directed a cyclic graph (DAG)"
